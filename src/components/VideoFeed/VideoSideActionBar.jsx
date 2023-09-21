@@ -1,26 +1,90 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShare } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router';
+import { faShare, faBookmark, faCommentDots, faHeart } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { SidebarIcon } from './common-components';
 
-function VideoSideActionBar({ shares }) {
-  const navigate = useNavigate()
+function VideoSideActionBar({ likes, comments, saves, shares }) {
+  const [interact, setInteract] = useState({
+    like: false,
+    comment: false,
+    save: false,
+    share: false
+  })
+  const iconMap = {
+    like: {
+      icon: faHeart,
+      count: likes,
+      color: '#FF0000',
+    },
+    comment: {
+      icon: faCommentDots,
+      count: comments,
+      color: 'white'
+    },
+    save: {
+      icon: faBookmark,
+      count: saves,
+      color: '#ffc107'
+    },
+    share: {
+      icon: faShare,
+      count: shares,
+      color: 'white'
+    }
+  }
+
+  const handleIconClick = (e) => {
+    const name = e.currentTarget.dataset.name;
+    setInteract({
+      ...interact,
+      [name]: !interact[name]
+    })
+  }
 
   return (
     <FooterRight>
-      <SidebarIcon
-        onClick={() => navigate(`/task`)}
-      >
-        <Icon icon={faShare} />
-        <p>{shares}</p>
-      </SidebarIcon>
+      {Object.keys(iconMap).map((item, idx) => 
+        <SidebarIcon
+          key={`sidebar-icon-${idx}`}
+          data-name={item}
+          onClick={handleIconClick}>
+          <Icon 
+            icon={iconMap[item].icon} 
+            style={{color: interact[item] ? iconMap[item].color : 'white'}}
+          />
+          <p>{parseFormatCount(item, iconMap[item].count, interact[item])}</p>
+        </SidebarIcon>
+      )}
       <SpinningRecord>
         <img src="https://static.thenounproject.com/png/934821-200.png" alt='Record Icon' />
       </SpinningRecord>
     </FooterRight>
   );
+}
+
+const parseFormatCount = (item, count, boolean) => {
+  const formatter = Intl.NumberFormat('en', { notation: 'compact'})
+
+  switch(item) {
+    case 'like':
+    case 'save':
+      return formatter.format(parseCount(count) + Number(boolean))
+    default:
+      return count
+  }
+}
+
+const parseCount = (count) => {
+  if (typeof count === 'string') {
+    const multipliers = {k: 1e3, m: 1e6, b: 1e9, t: 1e12};
+    const lastChar = count.at(-1).toLowerCase()
+    if (lastChar in multipliers) {
+      return parseFloat(count) * multipliers[lastChar]
+    }
+    return parseInt(count);
+  }
+  return count;
 }
 
 const FooterRight = styled.div`
@@ -35,7 +99,7 @@ const Icon = styled(FontAwesomeIcon)`
   height: 35px;
   color: white;
   &:hover {
-    color: #ffc107;
+    opacity: 80%;
   }
 `
 

@@ -31,11 +31,10 @@ export const HomeFeed = (props) => {
     // This function handles the intersection of videos
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
+        const videoElement = entry.target;
         if (entry.isIntersecting) {
-          const videoElement = entry.target;
           videoElement.play();
         } else {
-          const videoElement = entry.target;
           videoElement.pause();
         }
       });
@@ -75,6 +74,9 @@ export const HomeFeed = (props) => {
             description={video.description}
             song={video.song}
             shares={video.shares}
+            likes={video.likes}
+            saves={video.saves}
+            comments={video.comments}
             url={video.url}
             profilePic={video.profilePic}
             setVideoRef={handleVideoRef(i)}
