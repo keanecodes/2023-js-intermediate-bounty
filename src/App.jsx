@@ -4,11 +4,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper } from "swiper/react";
 import { Mousewheel } from 'swiper/modules';
-import VideoCard from '../../components/VideoFeed/VideoCard';
-import { CenterPortraitContainer } from '../../components/VideoFeed/common-components';
-import { VideoFeed } from '../../assets/videos';
+import VideoCard from './components/VideoCard';
+import { CenterPortraitContainer } from './components/common-components';
+import { VideoFeed } from './assets/videos';
 
-export const HomeFeed = (props) => {
+export const App = () => {
   const [videos, setVideos] = useState([])
   const videoRefs = useRef([]);
 
