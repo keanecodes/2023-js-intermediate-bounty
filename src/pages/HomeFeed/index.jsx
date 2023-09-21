@@ -5,7 +5,6 @@ import 'swiper/css/pagination';
 import { Swiper } from "swiper/react";
 import { Mousewheel } from 'swiper/modules';
 import VideoCard from '../../components/VideoFeed/VideoCard';
-import VideoHeader from '../../components/VideoFeed/VideoHeader';
 import { CenterPortraitContainer } from '../../components/VideoFeed/common-components';
 import { VideoFeed } from '../../assets/videos';
 
@@ -62,7 +61,6 @@ export const HomeFeed = (props) => {
 
   return(
     <CenterPortraitContainer>
-      <VideoHeader/>
       <StyledSwiper 
         direction={'vertical'}
         slidesPerView={1}

@@ -90,8 +90,8 @@ const UserProfile = styled.img`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 25px;
-  width: 45px; 
-  height: 45px; 
+  width: 35px; 
+  height: 35px; 
+  margin: 5px 1rem 25px 5px;
   color: #616161;
 `

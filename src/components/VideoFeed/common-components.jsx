@@ -18,8 +18,10 @@ export const CenterPortraitContainer = styled.div`
   margin: auto;
   animation: fadein 1s;
   @media screen and (max-width: 500px) {
-    min-width: 100%;
-    height: 100%;
+    margin: 0;
+    min-width: 95%;
+    height: 90%;
+    justify-content: center;
     border-radius: 0 0 35px 35px;
   }
 `

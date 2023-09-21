@@ -1,11 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { SwiperSlide } from "swiper/react";
 import VideoBotInfoBar from "./VideoBotInfoBar";
 import VideoSideActionBar from "./VideoSideActionBar";
+import VideoHeader from "./VideoHeader";
 
 function VideoCard(props) {
-  const { url, username, description, song, likes, shares, comments, saves, profilePic, setVideoRef, autoplay } = props;
+  const { url, username, description, song, shares, profilePic, setVideoRef, autoplay } = props;
+  const [muted, setMuted] = useState(true)
+  const [paused, setPaused] = useState(false)
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -16,14 +19,22 @@ function VideoCard(props) {
 
   const onVideoPress = () => {
     if (videoRef.current.paused) {
-      videoRef.current.play();
+      videoRef.current.play()
+      setPaused(false)
     } else {
       videoRef.current.pause();
+      setPaused(true)
     }
   };
 
   return (
     <StyledCard>
+      <VideoHeader
+        muted={muted}
+        setMuted={setMuted}
+        paused={paused}
+        onVideoPress={onVideoPress}
+      />
       <Video
         onClick={onVideoPress}
         ref={(ref) => {
@@ -31,7 +42,7 @@ function VideoCard(props) {
           setVideoRef(ref);
         }}
         loop
-        muted="muted"
+        muted={muted}
         src={url}
       />
       <BottomControls>
@@ -39,7 +50,7 @@ function VideoCard(props) {
           <VideoBotInfoBar username={username} description={description} song={song} profilePic={profilePic} />
         </div>
         <div className="footer-right">
-          <VideoSideActionBar likes={likes} shares={shares} comments={comments} saves={saves}  />
+          <VideoSideActionBar shares={shares} />
         </div>
       </BottomControls>
     </StyledCard>
@@ -57,18 +68,20 @@ const Video = styled.video`
 
 const BottomControls = styled.div`
   display: flex;
-  align-items: flex-end;
   height: 100%;
-  flex: auto
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
 `
 
 const StyledCard = styled(SwiperSlide)`
-  background: red;
   text-align: center;
   font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
+  display:flex;
+  flex-direction: column;
 
   & video {
     display: block;
@@ -77,6 +90,7 @@ const StyledCard = styled(SwiperSlide)`
     object-fit: cover;
   }
 `;
+
 // just a workaround. ignore this.
 // https://github.com/nolimits4web/swiper/issues/4413#issuecomment-1021387492
 VideoCard.displayName = "SwiperSlide";

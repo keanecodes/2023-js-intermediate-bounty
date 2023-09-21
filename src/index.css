@@ -39,8 +39,8 @@ body {
 }
 
 .footer-right {
-    z-index: 100;
-    color: #fff;
-    margin-right: 5px;
-    margin-bottom: 20px;
-  }
+  z-index: 100;
+  color: #fff;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}

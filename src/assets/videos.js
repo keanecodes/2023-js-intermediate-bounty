@@ -39,17 +39,7 @@ export class VideoFeed {
   }
 }
   
-
-
 export const videoUrls = [
-  {
-    url: video2,
-    profilePic: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=2',
-    username: 'dailydotdev',
-    description: 'Every developer brain @francesco.ciulla #developerjokes #programming #programminghumor #programmingmemes',
-    song: 'tarawarolin wants you to know this isnt my sound - Chaplain J Rob',
-    shares: 420,
-  },
   {
     url: video3,
     profilePic: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=3',
@@ -57,6 +47,14 @@ export const videoUrls = [
     description: '#programming #softwareengineer #vscode #programmerhumor #programmingmemes',
     song: 'help so many people are using my sound - Ezra',
     shares: 117,
+  },
+  {
+    url: video2,
+    profilePic: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=2',
+    username: 'dailydotdev',
+    description: 'Every developer brain @francesco.ciulla #developerjokes #programming #programminghumor #programmingmemes',
+    song: 'tarawarolin wants you to know this isnt my sound - Chaplain J Rob',
+    shares: 420,
   },
   {
     url: video4,
