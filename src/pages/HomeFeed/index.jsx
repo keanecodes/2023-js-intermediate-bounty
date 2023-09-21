@@ -5,16 +5,20 @@ import 'swiper/css/pagination';
 import { Swiper } from "swiper/react";
 import { Mousewheel } from 'swiper/modules';
 import VideoCard from '../../components/VideoFeed/VideoCard';
-import { videoUrls } from "./videos";
 import VideoHeader from '../../components/VideoFeed/VideoHeader';
 import { CenterPortraitContainer } from '../../components/VideoFeed/common-components';
+import { VideoFeed } from '../../assets/videos';
 
 export const HomeFeed = (props) => {
   const [videos, setVideos] = useState([])
   const videoRefs = useRef([]);
 
   useEffect(() => {
-    setVideos(videoUrls);
+    // Create instances of the VideoFeed class
+    const videoFeed = new VideoFeed();
+    // Display available videos
+    videoFeed.getAvailableVideos();
+    setVideos(videoFeed.videos);
   }, []);
 
 
@@ -72,9 +76,6 @@ export const HomeFeed = (props) => {
             username={video.username}
             description={video.description}
             song={video.song}
-            likes={video.likes}
-            saves={video.saves}
-            comments={video.comments}
             shares={video.shares}
             url={video.url}
             profilePic={video.profilePic}

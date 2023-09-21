@@ -1,42 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark, faShare } from '@fortawesome/free-solid-svg-icons';
+import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import { SidebarIcon } from './common-components';
 
-function VideoSideActionBar({ likes, comments, saves, shares }) {
-  const [saved, setSaved] = useState(false);
-
+function VideoSideActionBar({ shares }) {
   const navigate = useNavigate()
 
   return (
     <FooterRight>
-      <SidebarIcon>
-        {saved ? (
-          // Displaying the bookmark icon when saved
-          <FontAwesomeIcon
-            icon={faBookmark}
-            style={{ width: '35px', height: '35px', color: '#ffc107' }}
-            onClick={() => setSaved(false)}
-          />
-        ) : (
-          // Displaying the bookmark icon when not saved
-          <FontAwesomeIcon
-            icon={faBookmark}
-            style={{ width: '35px', height: '35px', color: 'white' }}
-            onClick={() => setSaved(true)}
-          />
-        )}
-        {/* Displaying the number of saves */}
-        <p>{saved ? saves + 1 : saves}</p>
-      </SidebarIcon>
       <SidebarIcon
         onClick={() => navigate(`/task`)}
       >
-        {/* The share icon */}
-        <FontAwesomeIcon icon={faShare} style={{ width: '35px', height: '35px', color: 'white' }} />
-        {/* Displaying the number of shares */}
+        <Icon icon={faShare} />
         <p>{shares}</p>
       </SidebarIcon>
       <SpinningRecord>
@@ -51,6 +28,15 @@ const FooterRight = styled.div`
   color: #fff;
   margin-right: 5px;
   margin-bottom: 20px;
+`
+
+const Icon = styled(FontAwesomeIcon)`
+  width: 35px;
+  height: 35px;
+  color: white;
+  &:hover {
+    color: #ffc107;
+  }
 `
 
 const SpinningRecord = styled(SidebarIcon)`
