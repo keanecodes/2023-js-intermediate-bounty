@@ -4,6 +4,7 @@ import { faShare, faBookmark, faCommentDots, faHeart } from '@fortawesome/free-s
 import styled from 'styled-components';
 import { SidebarIcon } from './common-components';
 import { CommentsBottomSheet } from './CommentsBottomSheet';
+import { ShareBottomSheet } from './ShareBottomSheet';
 
 function VideoSideActionBar({ likes, comments, saves, shares }) {
   const [interact, setInteract] = useState({
@@ -27,6 +28,11 @@ function VideoSideActionBar({ likes, comments, saves, shares }) {
       icon: faBookmark,
       count: saves,
       color: '#ffc107'
+    },
+    share: {
+      icon: faShare,
+      count: shares,
+      color: 'white'
     }
   }
 
@@ -59,6 +65,12 @@ function VideoSideActionBar({ likes, comments, saves, shares }) {
         isOpen={interact['comment']}
         toggleOpen={() => {
           setInteract({ ...interact, ["comment"]: !interact["comment"] })
+        }}
+      />
+      <ShareBottomSheet
+        isOpen={interact['share']}
+        toggleOpen={() => {
+          setInteract({ ...interact, ["share"]: !interact["share"] })
         }}
       />
     </FooterRight>

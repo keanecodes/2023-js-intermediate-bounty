@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sheet from 'react-modal-sheet';
 import styled from "styled-components";
 import SkeletonLoading from "./SkeletonLoading";
-import { UserProfile } from "./common-components";
+import { BottomSheet, UserProfile } from "./common-components";
 
 const { Container, Header, Content, Backdrop, Scroller } = Sheet
 
@@ -82,13 +82,6 @@ const Comments = (props) => {
     </>
   )
 }
-
-const BottomSheet = styled(Sheet)`
-  margin: 0 auto;
-  min-width: 500px;
-  width: 25vw;
-  max-width: 30vw;
-`;
 
 const SheetContent = styled.div`
   height: 55vh;

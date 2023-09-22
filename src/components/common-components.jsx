@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Sheet from 'react-modal-sheet';
 
 export const CenterPortraitContainer = styled.div`
   height: 75vh;
@@ -54,3 +55,10 @@ export const UserProfile = styled.img`
   margin: 5px 1rem 25px 5px;
   color: #616161;
 `
+
+export const BottomSheet = styled(Sheet)`
+  margin: 0 auto;
+  min-width: 500px;
+  width: 25vw;
+  max-width: 30vw;
+`;
