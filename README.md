@@ -12,7 +12,7 @@ npm i && npm run dev
 ## Incorporating JavaScript Concepts
 
 ### 1. JavaScript Classes  
-In `video.js`, JavaScript classes were utilized to structure the video data and handle different types of videos, including regular videos and videos with tasks. This uses the concept of JavaScript classes to create a structured and organized representation of video data, with a hierarchy of classes to model the data effectively. This approach not only promotes code reusability but also enhances maintainability and readability.The structure of the classes in video.js file is as follows:  
+In `video.js`, JavaScript classes were utilized to structure the video data and handle different types of videos, including regular videos and videos with tasks. This uses the concept of JavaScript classes to create a structured and organized representation of video data, with a hierarchy of classes to model the data effectively. This approach not only promotes code reusability but also enhances maintainability and readability. The structure of the classes in video.js file is as follows:  
 ```
 // Example of the Video and VideoTask classes
 class Video {
@@ -231,3 +231,6 @@ In `App.jsx`, the [Swiper](https://swiperjs.com/demos) library succinctly allows
 Interestingly, I came to know of this library while inspecting elements on the official tiktok.com website. I'm not sure why, but most of the tiktok clones found online (at the time of writing) aren't using this library to achieve the swiping effect. 
 ### 6. styled-components
 Why not tailwindcss? I understand it's all the hype right now, but I just work faster with css and prefer to keep my html clean.
+
+## Acknowledgements
+This project was forked from another TikTok clone to speed up development process. However, I still spent a substancial amount of time to research to make various adjustments and improvements that are relevant to the bounty rerequirements. I've also included wherever possible the sources of inspirations in the writeup.
