@@ -33,6 +33,7 @@ export const CommentsBottomSheet = (props) => {
 
   useEffect(() => {
     if (isOpen) {
+      // credits: https://youtu.be/-yIsQPp31L0?si=z2POA_WzCD3Ri2xB&t=2540
       const controller = new AbortController();
       fetchComments(controller)
       return () => controller.abort()

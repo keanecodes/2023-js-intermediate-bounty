@@ -23,6 +23,7 @@ const SkeletonLoading = () => {
 
 export default SkeletonLoading;
 
+// credits: https://codepen.io/maoberlehner/pen/bQGZYB
 const SkeletonBox = styled.div`
   display: inline-block;
   height: 1em;

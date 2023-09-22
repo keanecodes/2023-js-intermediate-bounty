@@ -61,6 +61,7 @@ const SheetContent = styled.div`
   justify-content: space-evenly;
 `
 
+// credits to: https://codepen.io/asheabbott/pen/GoMrzW
 const ShareIcon = styled.a`
   text-align: center;
   height: 50px;
