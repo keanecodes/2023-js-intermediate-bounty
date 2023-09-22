@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { SidebarIcon } from './common-components';
 import { BottomSheetComment } from './BottomSheetComment';
 import { BottomSheetShare } from './BottomSheetShare';
+import { BottomSheetTask } from './BottomSheetTask';
 
 function VideoSideActionBar({ likes, comments, saves, shares, task }) {
   const [interact, setInteract] = useState({
@@ -44,13 +45,27 @@ function VideoSideActionBar({ likes, comments, saves, shares, task }) {
     })
   }
 
+  const bottomSheetComponents = [
+    {
+      name: 'comment',
+      component: BottomSheetComment
+    },
+    {
+      name: 'share',
+      component: BottomSheetShare,
+    },
+    {
+      name: 'task',
+      component: BottomSheetTask
+    }
+  ]
+
   const handleIconClick = (e) => {
     const name = e.currentTarget.dataset.name;
-    name !== 'task' &&
-      setInteract({
-        ...interact,
-        [name]: !interact[name]
-      })
+    setInteract({
+      ...interact,
+      [name]: !interact[name]
+    })
   }
 
   const iconColorMap = (item) => {
@@ -78,18 +93,17 @@ function VideoSideActionBar({ likes, comments, saves, shares, task }) {
       <SpinningRecord>
         <img src="https://static.thenounproject.com/png/934821-200.png" alt='Record Icon' />
       </SpinningRecord>
-      <BottomSheetComment
-        isOpen={interact['comment']}
-        toggleOpen={() => {
-          setInteract({ ...interact, ["comment"]: !interact["comment"] })
-        }}
-      />
-      <BottomSheetShare
-        isOpen={interact['share']}
-        toggleOpen={() => {
-          setInteract({ ...interact, ["share"]: !interact["share"] })
-        }}
-      />
+      {/* credits: https://dev.to/collegewap/how-to-render-array-of-components-in-react-fma */}
+      {bottomSheetComponents.map((item,idx) => 
+        <item.component
+          key={`bottomsheet-${idx}`}
+          isOpen={interact[item.name]}
+          toggleOpen={() => {
+            setInteract({ ...interact, [item.name]: !interact[item.name] })
+          }} 
+          task={task ?? null}
+        />
+      )}
     </FooterRight>
   );
 }

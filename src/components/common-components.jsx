@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Sheet from 'react-modal-sheet';
 
+const { Container, Header, Content, Backdrop } = Sheet
+
 export const CenterPortraitContainer = styled.div`
   height: 75vh;
   min-width: 500px;
@@ -62,3 +64,15 @@ export const BottomSheet = styled(Sheet)`
   width: 25vw;
   max-width: 30vw;
 `;
+
+export const BottomSheetBoilerplate = ({children, onClickAway}) => (
+  <>
+    <Container>
+      <Header/>
+      <Content>
+        {children}
+      </Content>
+    </Container>
+    <Backdrop onClick={onClickAway}/>
+  </>
+)

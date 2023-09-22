@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Sheet from 'react-modal-sheet';
 import styled from "styled-components";
 import LoadingSkeleton from "./LoadingSkeleton";
-import { BottomSheet, UserProfile } from "./common-components";
+import { BottomSheet, BottomSheetBoilerplate, UserProfile } from "./common-components";
 
-const { Container, Header, Content, Backdrop, Scroller } = Sheet
+const { Scroller } = Sheet
 
 export const BottomSheetComment = (props) => {
   const {isOpen, toggleOpen} = props
@@ -47,20 +47,16 @@ export const BottomSheetComment = (props) => {
       snapPoints={[0.55, 0]}
       detent="content-height"
     >
-      <Container>
-        <Header/>
-        <Content>
-          <Scroller>
-            <SheetContent>
-              {loading
-                ? <LoadingSkeleton/> 
-                : <Comments data={comments}/>
-              }
-            </SheetContent>
-          </Scroller>
-        </Content>
-      </Container>
-      <Backdrop onClick={toggleOpen}/>
+      <BottomSheetBoilerplate onClickAway={toggleOpen}>
+        <Scroller>
+          <SheetContent>
+            {loading
+              ? <LoadingSkeleton/> 
+              : <Comments data={comments}/>
+            }
+          </SheetContent>
+        </Scroller>
+      </BottomSheetBoilerplate>
     </BottomSheet>
   );
 };

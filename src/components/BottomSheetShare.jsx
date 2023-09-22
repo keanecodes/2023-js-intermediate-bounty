@@ -2,11 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faXTwitter, faGooglePlusG, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import Sheet from 'react-modal-sheet';
-import { BottomSheet } from "./common-components";
-
-
-const { Container, Header, Content, Backdrop } = Sheet
+import { BottomSheet, BottomSheetBoilerplate } from "./common-components";
 
 export const BottomSheetShare = (props) => {
   const { isOpen, toggleOpen } = props
@@ -35,21 +31,20 @@ export const BottomSheetShare = (props) => {
       snapPoints={[0.20, 0]}
       detent="content-height"
     >
-      <Container>
-        <Header />
-        <Content>
-          <SheetContent>
-            {
-              iconMap.map(item => (
-                <ShareIcon style={{background: item.color}} target="blank">
-                  <FontAwesomeIcon icon={item.icon}/>
-                </ShareIcon>
-              ))
-            }
-          </SheetContent>
-        </Content>
-      </Container>
-      <Backdrop onClick={toggleOpen} />
+      <BottomSheetBoilerplate onClickAway={toggleOpen}>
+        <SheetContent>
+          {
+            iconMap.map((item, idx) => (
+              <ShareIcon 
+                key={`shareicon-${idx}`}
+                style={{background: item.color}}
+              >
+                <FontAwesomeIcon icon={item.icon}/>
+              </ShareIcon>
+            ))
+          }
+        </SheetContent>
+      </BottomSheetBoilerplate>
     </BottomSheet>
   );
 };

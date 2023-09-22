@@ -38,7 +38,7 @@ const Container = styled.div`
     z-index: 1;
     color: white;
     text-align: start;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     width: 90%;
   }
 `
