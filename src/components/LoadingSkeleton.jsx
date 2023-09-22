@@ -8,12 +8,16 @@ const LoadingSkeleton = () => {
       [...Array(5)].map((_, i) => 
         <div
           key={`skeleton-${i}`}
-        >      
-          <SkeletonBox style={{ width: '30%' }} />
-          <SkeletonBox style={{ width: '90%' }} />
-          <SkeletonBox style={{ width: '83%' }} />
-          <SkeletonBox style={{ width: '80%' }} />
-          <br/><br/>
+          style={{display: "flex"}}
+        > 
+          <div>
+            <SkeletonBox style={{ width: '2.5rem', height: '2.5rem' }} />     
+          </div>
+          <div style={{flex: 1}}>
+            <SkeletonBox style={{ width: '30%' }} />
+            <SkeletonBox style={{ width: '90%' }} />
+            <br/><br/>
+          </div>
         </div>
       )
     }
@@ -30,6 +34,7 @@ const SkeletonBox = styled.div`
   position: relative;
   overflow: hidden;
   background-color: #DDDBDD;
+  margin: 0.5rem;
 
   &::after {
     position: absolute;
@@ -45,7 +50,7 @@ const SkeletonBox = styled.div`
       rgba(255,255,255, 0.5) 60%,
       rgba(255,255,255, 0)
     );
-    animation: shimmer 5s infinite;
+    animation: shimmer 2s infinite;
     content: '';
   }
 

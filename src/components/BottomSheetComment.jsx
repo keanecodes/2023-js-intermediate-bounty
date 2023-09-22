@@ -6,24 +6,23 @@ import { BottomSheet, BottomSheetBoilerplate, UserProfile } from "./common-compo
 
 const { Scroller } = Sheet
 
-export const BottomSheetComment = (props) => {
-  const {isOpen, toggleOpen} = props
-  const [loading, setLoading] = useState(true)
+export const BottomSheetComment = ({isOpen, toggleOpen}) => {
+  const [loading, setLoading] = useState(false)
   const [comments, setComments] = useState([])
 
-  const fetchComments = (controller) => {
+  const fetchComments = async (controller) => {
     try {
-      fetch(`https://dummyjson.com/comments`, {
+      setLoading(true)
+      const res = await fetch(`https://dummyjson.com/comments`, {
         signal: controller.signal
       })
-      .then(res => res.json())
-      .then(({comments}) => {
-        const shuffled = comments
-          .map(value => ({ value, sort: Math.random() }))
-          .sort((a, b) => a.sort - b.sort)
-          .map(({ value }) => value)
-            setComments(shuffled)
-          });
+      const { comments } = await res.json()
+      // workaround to better fake api to look like fetching new
+      const shuffled = comments
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value)
+      setComments(shuffled)
     } catch (e) {
       console.error(e) 
     } finally {
