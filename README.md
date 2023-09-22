@@ -1,6 +1,12 @@
 ## Overview
 This project showcases a TikTok clone, a web application developed as part of a [bounty project that required the use of JavaScript classes, switch statements, and try-catch-finally statements](https://app.stackup.dev/bounty/javascript-intermediate-campaign-bounty). The project aims to replicate the core functionality of TikTok, allowing users to view and interact with short video content, including liking, saving, sharing, and viewing comments. Additionally, there's a small mod to inlude 'Special Quest' - a way of nudging users to take action on their new insights related to the videos - by suggesting some small tasks to the user.
 
+<div align="center">
+    <video src="https://github.com/keanecodes/2023-js-intermediate-bounty/assets/22881005/a05ea1d6-0f2f-4a63-bcef-25b26a2ba66c" width="400" />
+
+</div>
+
+
 ## Why a TikTok Clone?
 Creating a TikTok clone provides an engaging and relevant context for implementing the required JavaScript concepts. At the point of writing, TikTok is a popular social media platform known for its user-friendly interface and dynamic video content. By mimicking its features, the project demonstrates how classes, switch statements, and try-catch-finally statements can be potentially applied in a real-world application.
 
