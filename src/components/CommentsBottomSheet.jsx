@@ -11,9 +11,11 @@ export const CommentsBottomSheet = (props) => {
   const [loading, setLoading] = useState(true)
   const [comments, setComments] = useState([])
 
-  const fetchComments = () => {
+  const fetchComments = (controller) => {
     try {
-      fetch(`https://dummyjson.com/comments`)
+      fetch(`https://dummyjson.com/comments`, {
+        signal: controller.signal
+      })
       .then(res => res.json())
       .then(({comments}) => {
         const shuffled = comments
@@ -30,7 +32,11 @@ export const CommentsBottomSheet = (props) => {
   }
 
   useEffect(() => {
-    isOpen && fetchComments()
+    if (isOpen) {
+      const controller = new AbortController();
+      fetchComments(controller)
+      return () => controller.abort()
+    }
   }, [isOpen])
 
   return (
