@@ -8,7 +8,7 @@ import { BottomSheet } from "./common-components";
 
 const { Container, Header, Content, Backdrop } = Sheet
 
-export const ShareBottomSheet = (props) => {
+export const BottomSheetShare = (props) => {
   const { isOpen, toggleOpen } = props
   const iconMap = [
     {

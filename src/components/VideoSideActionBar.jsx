@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare, faBookmark, faCommentDots, faHeart, faTicket } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { SidebarIcon } from './common-components';
-import { CommentsBottomSheet } from './CommentsBottomSheet';
-import { ShareBottomSheet } from './ShareBottomSheet';
+import { BottomSheetComment } from './BottomSheetComment';
+import { BottomSheetShare } from './BottomSheetShare';
 
 function VideoSideActionBar({ likes, comments, saves, shares, task }) {
   const [interact, setInteract] = useState({
@@ -78,13 +78,13 @@ function VideoSideActionBar({ likes, comments, saves, shares, task }) {
       <SpinningRecord>
         <img src="https://static.thenounproject.com/png/934821-200.png" alt='Record Icon' />
       </SpinningRecord>
-      <CommentsBottomSheet
+      <BottomSheetComment
         isOpen={interact['comment']}
         toggleOpen={() => {
           setInteract({ ...interact, ["comment"]: !interact["comment"] })
         }}
       />
-      <ShareBottomSheet
+      <BottomSheetShare
         isOpen={interact['share']}
         toggleOpen={() => {
           setInteract({ ...interact, ["share"]: !interact["share"] })

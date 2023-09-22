@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SkeletonLoading = () => {
+const LoadingSkeleton = () => {
   return (
     <>
     {
@@ -21,7 +21,7 @@ const SkeletonLoading = () => {
   );
 };
 
-export default SkeletonLoading;
+export default LoadingSkeleton;
 
 // credits: https://codepen.io/maoberlehner/pen/bQGZYB
 const SkeletonBox = styled.div`

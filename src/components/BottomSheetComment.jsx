@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Sheet from 'react-modal-sheet';
 import styled from "styled-components";
-import SkeletonLoading from "./SkeletonLoading";
+import LoadingSkeleton from "./LoadingSkeleton";
 import { BottomSheet, UserProfile } from "./common-components";
 
 const { Container, Header, Content, Backdrop, Scroller } = Sheet
 
-export const CommentsBottomSheet = (props) => {
+export const BottomSheetComment = (props) => {
   const {isOpen, toggleOpen} = props
   const [loading, setLoading] = useState(true)
   const [comments, setComments] = useState([])
@@ -53,7 +53,7 @@ export const CommentsBottomSheet = (props) => {
           <Scroller>
             <SheetContent>
               {loading
-                ? <SkeletonLoading/> 
+                ? <LoadingSkeleton/> 
                 : <Comments data={comments}/>
               }
             </SheetContent>
