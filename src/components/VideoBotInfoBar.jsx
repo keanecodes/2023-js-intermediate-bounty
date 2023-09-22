@@ -5,37 +5,45 @@ import { SidebarIcon, UserProfile } from './common-components';
 export default function VideoBotInfoBar({ username, description, song, profilePic }) {
 
   return (
-    <FooterContainer>
-      <FooterLeft>
-        <TextContainer>
-          <p>{description}</p>
-          <SponsorSection>
+    <Container>
+      <p>{description}</p>
+      <FlexWrapper>
+        <ProfileMusicSection>
+          <UploaderSection>
             <SidebarIcon>
               {profilePic ? (
                   <UserProfile src={profilePic} alt='Profile' />
                 ) : null}
             </SidebarIcon>
             <h3>@{username}</h3>
-          </SponsorSection>
-          <Ticker>
-            {/* eslint-disable-next-line jsx-a11y/no-distracting-elements */}
-            <marquee direction="left" scrollamount="2">
-              <span>{song}</span>
-            </marquee>
-          </Ticker>
-        </TextContainer>
-      </FooterLeft>
-    </FooterContainer>
+          </UploaderSection>
+          {/* eslint-disable-next-line jsx-a11y/no-distracting-elements */}
+          <marquee direction="left" scrollamount="2">
+            <span>{song}</span>
+          </marquee>
+        </ProfileMusicSection>
+      </FlexWrapper>
+    </Container>
   );
 }
 
-const FooterContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+
+  & p {
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1;
+    color: white;
+    text-align: start;
+    margin-left: 1rem;
+    width: 90%;
+  }
 `
 
-const FooterLeft = styled.div`
+const FlexWrapper = styled.div`
   position: relative;
   color: white;
   flex-grow: 1;
@@ -45,17 +53,13 @@ const FooterLeft = styled.div`
   text-align: start;
 `
 
-const TextContainer = styled.div`
+const ProfileMusicSection = styled.div`
   width: 100%;
+  display: inline-flex;
   & h3 {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 5px;
-  }
-
-  & p {
-    font-size: 14px;
-    font-weight: 500;
   }
 
   & span {
@@ -63,21 +67,15 @@ const TextContainer = styled.div`
     font-weight: 400;
     color: #fff;
   }
-`
-
-const SponsorSection = styled.div`
-  display:flex;
-`
-
-const Ticker = styled.div`
-  height: fit-content;
-  width: 100%;
-  display: flex;
-  align-items: center;
-
   & marquee {
-    display: flex;
-    align-items: center;
-    width: 100%;
+    display: inline-flex;
+    align-items: flex-end;
+    margin-bottom: 0.2rem;
   }
+`
+
+const UploaderSection = styled.div`
+  display:flex;
+  margin-bottom: -2rem;
+  margin-right: 1.5rem;
 `

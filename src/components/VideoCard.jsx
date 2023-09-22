@@ -6,7 +6,7 @@ import VideoSideActionBar from "./VideoSideActionBar";
 import VideoHeader from "./VideoHeader";
 
 function VideoCard(props) {
-  const { url, username, description, song, shares, likes, saves, comments, profilePic, setVideoRef, autoplay } = props;
+  const { url, username, description, song, shares, likes, saves, comments, profilePic, setVideoRef, autoplay, task=null } = props;
   const [muted, setMuted] = useState(true)
   const [paused, setPaused] = useState(false)
   const videoRef = useRef(null);
@@ -50,7 +50,7 @@ function VideoCard(props) {
           <VideoBotInfoBar username={username} description={description} song={song} profilePic={profilePic} />
         </div>
         <div className="footer-right">
-          <VideoSideActionBar likes={likes} shares={shares} comments={comments} saves={saves}/>
+          <VideoSideActionBar likes={likes} shares={shares} comments={comments} saves={saves} task={task}/>
         </div>
       </BottomControls>
     </StyledCard>

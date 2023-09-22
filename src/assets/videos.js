@@ -18,9 +18,9 @@ export class Video {
 }
 
 export class VideoTask extends Video {
-  constructor(url, profilePic, username, description, song, shares, title) {
+  constructor(url, profilePic, username, description, song, shares, likes, comments, saves, task) {
     super(url, profilePic, username, description, song, shares, likes, comments, saves);
-    this.title = title;
+    this.task = task;
   }
 }
   
@@ -36,7 +36,9 @@ export class VideoFeed {
   getAvailableVideos() {
     videoUrls.forEach((video) => {
       const {url, profilePic, username, description, song, shares, saves, comments, likes} = video
-      this.addVideo(new Video(url, profilePic, username, description, song, shares, likes, comments, saves))
+      Boolean(video.task) 
+        ? this.addVideo(new VideoTask(url, profilePic, username, description, song, shares, likes, comments, saves, video.task))
+        : this.addVideo(new Video(url, profilePic, username, description, song, shares, likes, comments, saves))
     });
     return videoUrls
   }
@@ -72,6 +74,7 @@ export const videoUrls = [
     description: 'Every developer brain @francesco.ciulla #developerjokes #programming #programminghumor #programmingmemes',
     song: 'tarawarolin wants you to know this isnt my sound - Chaplain J Rob',
     likes: '13.4K',
+    task: "Try advanced console.log() like console.error() or console.table() ",
     comments: 3121,
     saves: 254,
     shares: 420,

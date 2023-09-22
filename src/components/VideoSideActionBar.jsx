@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShare, faBookmark, faCommentDots, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faShare, faBookmark, faCommentDots, faHeart, faTicket } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { SidebarIcon } from './common-components';
 import { CommentsBottomSheet } from './CommentsBottomSheet';
 import { ShareBottomSheet } from './ShareBottomSheet';
 
-function VideoSideActionBar({ likes, comments, saves, shares }) {
+function VideoSideActionBar({ likes, comments, saves, shares, task }) {
   const [interact, setInteract] = useState({
     like: false,
     comment: false,
     save: false,
-    share: false
+    share: false,
+    task: false
   })
   const iconMap = {
     like: {
@@ -33,15 +34,31 @@ function VideoSideActionBar({ likes, comments, saves, shares }) {
       icon: faShare,
       count: shares,
       color: 'white'
-    }
+    },
+    ...(Boolean(task) && {
+      task: {
+        icon: faTicket,
+        count: 1,
+        color: "#d5953b"
+      }
+    })
   }
 
   const handleIconClick = (e) => {
     const name = e.currentTarget.dataset.name;
-    setInteract({
-      ...interact,
-      [name]: !interact[name]
-    })
+    name !== 'task' &&
+      setInteract({
+        ...interact,
+        [name]: !interact[name]
+      })
+  }
+
+  const iconColorMap = (item) => {
+    return item === 'task'
+      // static special color
+      ? { color: iconMap[item].color } 
+       // dynamic interaction colors
+      : { color: interact[item] ? iconMap[item].color : 'white'}
   }
 
   return (
@@ -53,7 +70,7 @@ function VideoSideActionBar({ likes, comments, saves, shares }) {
           onClick={handleIconClick}>
           <Icon 
             icon={iconMap[item].icon} 
-            style={{color: interact[item] ? iconMap[item].color : 'white'}}
+            style={iconColorMap(item)}
           />
           <p>{parseFormatCount(item, iconMap[item].count, interact[item])}</p>
         </SidebarIcon>
@@ -84,6 +101,8 @@ const parseFormatCount = (item, count, boolean) => {
     case 'like':
     case 'save':
       return formatter.format(parseCount(count) + Number(boolean))
+    case 'task':
+      return 'Special Quest';
     default:
       return count
   }
@@ -105,7 +124,7 @@ const FooterRight = styled.div`
   z-index: 100;
   color: #fff;
   margin-right: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 `
 
 const Icon = styled(FontAwesomeIcon)`
@@ -118,7 +137,6 @@ const Icon = styled(FontAwesomeIcon)`
 `
 
 const SpinningRecord = styled(SidebarIcon)`
-  margin-top: 50px;
   animation: spinTheRecord infinite 5s linear;
   filter: invert(1);
   

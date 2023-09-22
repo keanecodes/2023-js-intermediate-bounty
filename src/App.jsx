@@ -76,6 +76,7 @@ export const App = () => {
             shares={video.shares}
             likes={video.likes}
             saves={video.saves}
+            task={video.task}
             comments={video.comments}
             url={video.url}
             profilePic={video.profilePic}
