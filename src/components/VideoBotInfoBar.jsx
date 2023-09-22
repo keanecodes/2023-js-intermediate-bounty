@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
-import { SidebarIcon } from './common-components';
+import { SidebarIcon, UserProfile } from './common-components';
 
 export default function VideoBotInfoBar({ username, description, song, profilePic }) {
 
@@ -80,18 +80,4 @@ const Ticker = styled.div`
     align-items: center;
     width: 100%;
   }
-`
-
-const UserProfile = styled.img`
-  border-radius: 50%;
-  border: #fff 2px solid;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 35px; 
-  height: 35px; 
-  margin: 5px 1rem 25px 5px;
-  color: #616161;
 `

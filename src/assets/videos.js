@@ -47,7 +47,7 @@ export const videoUrls = [
     url: video3,
     profilePic: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=3',
     username: 'wojciechtrefon',
-    description: "What's your fav code editor? vote now --->", // try catch finally
+    description: '#programming #softwareengineer #vscode #programmerhumor #programmingmemes',
     song: 'help so many people are using my sound - Ezra',
     likes: 5449,
     comments: 238,
@@ -58,7 +58,7 @@ export const videoUrls = [
     url: video4,
     profilePic: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=4',
     username: 'faruktutkus',
-    description: 'got a better way to code this? challenge me --->', // transform if else
+    description: 'Wait for the end | Im RTX 4090 TI | #softwareengineer #softwareengineer #coding #codinglife #codingmemes ',
     song: 'orijinal ses - Computer Science',
     likes: 9689,
     comments: 230,
@@ -69,7 +69,7 @@ export const videoUrls = [
     url: video2,
     profilePic: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=2',
     username: 'dailydotdev',
-    description: 'how do you debug your code? show us --->', // non task
+    description: 'Every developer brain @francesco.ciulla #developerjokes #programming #programminghumor #programmingmemes',
     song: 'tarawarolin wants you to know this isnt my sound - Chaplain J Rob',
     likes: '13.4K',
     comments: 3121,

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare, faBookmark, faCommentDots, faHeart } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { SidebarIcon } from './common-components';
+import { CommentsBottomSheet } from './CommentsBottomSheet';
 
 function VideoSideActionBar({ likes, comments, saves, shares }) {
   const [interact, setInteract] = useState({
@@ -26,11 +27,6 @@ function VideoSideActionBar({ likes, comments, saves, shares }) {
       icon: faBookmark,
       count: saves,
       color: '#ffc107'
-    },
-    share: {
-      icon: faShare,
-      count: shares,
-      color: 'white'
     }
   }
 
@@ -59,6 +55,12 @@ function VideoSideActionBar({ likes, comments, saves, shares }) {
       <SpinningRecord>
         <img src="https://static.thenounproject.com/png/934821-200.png" alt='Record Icon' />
       </SpinningRecord>
+      <CommentsBottomSheet
+        isOpen={interact['comment']}
+        toggleOpen={() => {
+          setInteract({ ...interact, ["comment"]: !interact["comment"] })
+        }}
+      />
     </FooterRight>
   );
 }

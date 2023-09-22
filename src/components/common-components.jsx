@@ -40,3 +40,17 @@ export const SidebarIcon = styled.div`
     margin-top: 5px;
   }
 `
+
+export const UserProfile = styled.img`
+  border-radius: 50%;
+  border: #fff 2px solid;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 35px; 
+  height: 35px; 
+  margin: 5px 1rem 25px 5px;
+  color: #616161;
+`
